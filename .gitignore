@@ -5,6 +5,11 @@
 !/LICENSE.txt
 !/PANDUAN_INSTALASI.md
 !/app.py
+!/gateway_api.py
+!/i18n.py
+!/tests/
+/tests/*
+!/tests/test_*.py
 !/app.ico
 !/whatsapp_bridge.js
 !/package.json

@@ -568,22 +568,17 @@ async function handle(message) {
         const rawPhone = String(args.phone || "").replace(/\D/g, "");
         const defaultChatId = rawPhone + "@c.us";
         try {
-          const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve("TIMEOUT"), 4000));
           const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve("TIMEOUT"), 2500));
           const queryPromise = (async () => {
             try {
               return await client.getNumberId(rawPhone);
             } catch (err) {
               log("[bridge] getNumberId error:", err.message);
-              return null;
               return "ERROR";
             }
           })();
 
           const checkRes = await Promise.race([queryPromise, timeoutPromise]);
-          if (checkRes === "TIMEOUT") {
-            log(`[bridge] check_exists timeout for ${rawPhone}; fallback ke kirim langsung.`);
-            result = { numberExists: true, chatId: defaultChatId, fallback: true, reason: "timeout" };
           if (checkRes === "TIMEOUT" || checkRes === "ERROR") {
             result = { numberExists: true, chatId: defaultChatId, fallback: true, reason: String(checkRes) };
           } else if (checkRes && checkRes._serialized) {
@@ -615,7 +610,6 @@ async function handle(message) {
         ready();
         await ensureWWebJSInjected(client);
         const rawPhone = String(args.phone || "").replace(/\D/g, "");
-        const chatId = (args.chatId && typeof args.chatId === "string" && args.chatId.includes("@"))
         let chatId = (args.chatId && typeof args.chatId === "string" && args.chatId.includes("@"))
           ? args.chatId
           : (rawPhone + "@c.us");
@@ -639,10 +633,8 @@ async function handle(message) {
           caption: args.text || "",
           sendSeen: false,
           linkPreview: false,
-          waitUntilMsgSent: true
           waitUntilMsgSent: false
         };
-        const sendTimeoutMs = 35000;
         const sendTimeoutMs = 20000;
         const sendTask = (async () => {
           if (args.image) {
@@ -661,7 +653,6 @@ async function handle(message) {
           }
         })();
         const timeoutTask = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error("Waktu pengiriman pesan habis (35 detik). Pastikan koneksi WhatsApp aktif.")), sendTimeoutMs)
           setTimeout(() => reject(new Error("Waktu pengiriman pesan habis (20 detik). Pastikan koneksi WhatsApp aktif.")), sendTimeoutMs)
         );
         const sent = await Promise.race([sendTask, timeoutTask]);

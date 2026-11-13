@@ -1,51 +1,33 @@
-# WAblast
+﻿# WAblast
 
-## Cara kerja
+WAblast is a Windows desktop app for sending WhatsApp messages to up to 50 recipients per batch, using five editable templates and optional images.
 
-Aplikasi terhubung langsung ke WhatsApp Web melalui proses lokal whatsapp-web.js; tidak memakai WAHA, server lokal terpisah, atau Docker. Sesi login menggunakan QR dan disimpan di folder `%APPDATA%\WAblast`\\whatsapp_auth, sehingga biasanya tidak perlu scan ulang setiap kali aplikasi dibuka.
+## Features
 
-## Persyaratan source
+- Connect directly through WhatsApp Web using a QR code, or configure a WAHA server or compatible custom gateway under **Custom API**.
+- Import recipients from CSV, personalize messages with `{{name}}` and `{{phone}}`, and attach JPEG, PNG, or WebP images up to 16 MB.
+- Use a random delay of 60–180 seconds or set a manual delay of 10–600 seconds. After every 10 recipients, the app waits at least five minutes before continuing.
+- Confirm recipient consent for every batch. The opt-out list is always applied.
+- Pause or stop a batch and review per-recipient results and local history.
+- Choose English or Indonesian in the sidebar. Restart the app to apply the language change.
 
-- Windows 10/11
-- Python 3.10+ dengan Tkinter dan Pillow
-- Node.js 22.12+ dan npm
-- Microsoft Edge atau Google Chrome terpasang
+## Run from source
 
-## Persiapan satu kali
+Requirements: Windows 10/11, Python 3.10+ with Tkinter and Pillow, Node.js 22.12+ with npm, and Microsoft Edge or Google Chrome.
 
-Di folder aplikasi, jalankan install_dependencies.bat. Skrip menginstal modul Node yang diperlukan. Puppeteer memakai Edge atau Chrome yang sudah terpasang dan tidak mengunduh browser Chromium tambahan.
+1. Install Pillow with `py -3 -m pip install Pillow`.
+2. Run `install_dependencies.bat` to install the Node dependencies.
+3. Run `run_app.bat`, or execute `py -3 app.py`.
+4. Open **WhatsApp Web**, request a QR code, and scan it from Linked Devices on your phone.
 
-## Menjalankan
+For the gateway option, configure the server URL and session under **Custom API**. WAHA must be running separately. Custom gateways require endpoint and response mappings compatible with the provider; an API key alone does not guarantee compatibility. API keys are kept in memory for the current session.
 
-Jalankan run_app.bat, atau dari PowerShell:
+## Privacy and limitations
 
-py -3 app.py
+The direct WhatsApp Web session and application data are stored under `%APPDATA%\WAblast`. The app restricts this folder to the current Windows account and SYSTEM using NTFS permissions. On a shared Windows account, log out after use; if remote logout cannot be confirmed, remove the linked device from your phone.
 
-Pada menu WhatsApp Web, klik Hubungkan / Minta QR, lalu pindai QR melalui WhatsApp di ponsel: Perangkat Tertaut → Tautkan Perangkat. Sesi tertaut disimpan secara lokal. Tombol Logout WhatsApp di halaman tersebut mencoba logout jarak jauh, menutup browser lokal, lalu menghapus sesi login dari PC.
+Number checks do not indicate whether a recipient is online. A sent status means the request was accepted by the connection or gateway; it does not confirm delivery or reading. The app stops the queue if the session disconnects.
 
-## Perangkat bersama
+whatsapp-web.js is an unofficial community library. Changes to WhatsApp Web can break the integration, and automated use may lead to account restrictions. Users are responsible for recipient consent, opt-outs, and applicable rules.
 
-WAblast membatasi folder data `%APPDATA%\WAblast` dengan ACL NTFS untuk akun Windows aktif dan SYSTEM. Jika ACL gagal diterapkan, koneksi WhatsApp diblokir. ACL ini tidak memisahkan orang yang memakai akun Windows yang sama. Setelah selesai di komputer bersama, buka halaman WhatsApp Web dan gunakan tombol Logout WhatsApp. Jika logout jarak jauh tidak dapat dipastikan, hapus perangkat WAblast dari menu Perangkat Tertaut di ponsel.
-
-## Mengirim pesan
-
-1. Buat hingga lima template melalui menu samping Template; setiap template dapat memiliki gambar JPEG, PNG, atau WebP maksimal 16 MB.
-2. Masukkan satu nomor per baris atau impor CSV. Nomor lokal boleh memakai `08...` atau tanpa nol seperti `8...`; aplikasi menambahkan kode negara default (62). Nomor internasional seperti `+62...` dan `0062...` juga didukung. Nama opsional dapat ditulis setelah koma.
-3. Masukkan nomor opt-out di menu terkait; filter selalu aktif, dan baris nomor yang tidak valid akan menghentikan run sampai diperbaiki.
-4. Konfirmasi bahwa semua penerima menyetujui pesan pada setiap run, lalu pilih template tertentu atau `Template Acak (per nomor)`. Persetujuan wajib dan tidak tersimpan sebagai persetujuan untuk run berikutnya.
-
-Sebelum mengirim, aplikasi memeriksa apakah nomor terdaftar di WhatsApp. Nomor yang tidak terdaftar dilewati. Pemeriksaan ini tidak menunjukkan apakah seseorang sedang online. Status Dikirim berarti WhatsApp Web menerima permintaan, bukan konfirmasi pesan sudah dibaca.
-
-## Batasan dan catatan
-
-- Maksimal 50 nomor per run; jeda antar pesan dipilih acak dari 60 hingga 180 detik, dan istirahat batch otomatis 5 menit setiap 10 nomor.
-- Gambar diperiksa berdasarkan format file sebenarnya dan dibatasi maksimal 16 MB.
-- Sesi yang terputus menghentikan antrean.
-- whatsapp-web.js adalah library komunitas tidak resmi yang mengendalikan WhatsApp Web melalui Puppeteer. WhatsApp dapat mengubah layanan atau membatasi akun yang memakai klien otomatis tidak resmi.
-- Panggilan suara AI tidak termasuk.
-- Source mode membutuhkan Python, Node.js, dan Edge/Chrome. Build EXE mandiri belum disiapkan.
-
-## Referensi
-
-- https://github.com/wwebjs/whatsapp-web.js
-- https://wwebjs.dev/guide/creating-your-bot/authentication
+See [Installation guide](PANDUAN_INSTALASI.md) and [License and terms](LICENSE.txt).
