@@ -1,9 +1,5 @@
 # WAblast
 
-Rencana distribusi installer desktop dan tahap Cloud API di masa depan: [ROADMAP_KOMERSIAL.md](ROADMAP_KOMERSIAL.md).
-
-Aplikasi desktop Windows untuk mengirim pesan WhatsApp dari lima template yang dapat diedit, dengan gambar opsional, batch maksimal 50 nomor, jeda acak 1–3 menit, dan istirahat 5 menit setiap kelipatan 10 nomor.
-
 ## Cara kerja
 
 Aplikasi terhubung langsung ke WhatsApp Web melalui proses lokal whatsapp-web.js; tidak memakai WAHA, server lokal terpisah, atau Docker. Sesi login menggunakan QR dan disimpan di folder `%APPDATA%\WAblast`\\whatsapp_auth, sehingga biasanya tidak perlu scan ulang setiap kali aplikasi dibuka.
