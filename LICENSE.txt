@@ -1,0 +1,67 @@
+================================================================================
+                    PERJANJIAN LISENSI PENGGUNA AKHIR (EULA)
+                       DAN SYARAT KETENTUAN WABLAST
+================================================================================
+
+Harap baca perjanjian ini dengan saksama sebelum menginstal, menyalin, atau
+menggunakan perangkat lunak WAblast. Dengan menginstal atau menggunakan aplikasi ini,
+Anda menyatakan bahwa Anda menyetujui seluruh ketentuan di bawah ini.
+
+1. KEPEMILIKAN DAN LISENSI
+WAblast adalah perangkat lunak otomasi pengiriman pesan desktop untuk Windows.
+Anda diberikan hak non-eksklusif, tidak dapat dipindahtangankan, untuk menggunakan
+perangkat lunak ini sesuai dengan panduan dan batasan teknis yang ditetapkan.
+
+2. PENAFIAN PENTING MENGENAI WHATSAPP (DISCLAIMER)
+a. WAblast TIDAK berafiliasi, didukung, disertifikasi, atau disponsori oleh
+   WhatsApp Inc., Meta Platforms Inc., atau entitas anak perusahaannya.
+b. WAblast menggunakan protokol komunikasi berbasis web melalui pustaka pihak ketiga
+   independen (whatsapp-web.js).
+c. Penggunaan otomasi tidak resmi pada WhatsApp memiliki potensi risiko terhadap akun,
+   termasuk pembatasan sementara atau pemblokiran permanen (ban) oleh sistem keamanan Meta.
+d. Fitur jeda acak (random jitter delay 60-180 detik) dan batas pengiriman (maksimal 10
+   nomor per batch) dirancang untuk meminimalkan risiko deteksi pola, namun BUKAN
+   merupakan jaminan bahwa akun Anda kebal dari tindakan pemblokiran WhatsApp.
+e. Pengembang WAblast tidak bertanggung jawab atas kerugian bisnis, kehilangan data,
+   atau pemblokiran akun WhatsApp akibat penggunaan aplikasi ini.
+
+3. KEWAJIBAN DAN KEPATUHAN PENGGUNA (ANTI-SPAM)
+Sebagai pengguna WAblast, Anda bertanggung jawab penuh atas:
+a. Memastikan bahwa setiap penerima pesan telah memberikan persetujuan (opt-in)
+   untuk menerima pesan dari Anda.
+b. Menghormati dan segera memproses setiap permintaan berhenti berlangganan (opt-out)
+   melalui menu 'Daftar Opt-out' pada aplikasi.
+c. Mematuhi Kebijakan Berkirim Pesan WhatsApp Business dan peraturan perundang-undangan
+   yang berlaku di wilayah Anda terkait privasi data dan perlindungan konsumen.
+d. Tidak menggunakan aplikasi untuk tujuan penipuan, spam massal tanpa izin, ujaran
+   kebencian, atau penyebaran materi ilegal.
+
+4. BATASAN TANGGUNG JAWAB
+PERANGKAT LUNAK INI DISEDIAKAN "SEBAGAIMANA ADANYA" (AS-IS) TANPA JAMINAN APAPUN,
+BAIK TERSURAT MAUPUN TERSIRAT. PENGEMBANG TIDAK BERTANGGUNG JAWAB ATAS SEGALA BENTUK
+KERUSAKAN LANGSUNG MAUPUN TIDAK LANGSUNG YANG TIMBUL DARI PENGGUNAAN APLIKASI INI.
+
+================================================================================
+                       ATRIBUSI LISENSI OPEN SOURCE
+================================================================================
+
+Aplikasi WAblast mengintegrasikan komponen pustaka sumber terbuka berikut:
+
+1. whatsapp-web.js
+   Copyright (c) 2019 Pedro S. Lopez
+   Dilisensikan di bawah Apache License, Version 2.0.
+   Salinan lisensi dapat diakses di: https://www.apache.org/licenses/LICENSE-2.0
+
+2. Pillow (Python Imaging Library fork)
+   Copyright (c) 2010-2026 Alex Clark and contributors
+   Copyright (c) 1995-2011 Secret Labs AB, Fredrik Lundh and contributors
+   Dilisensikan di bawah Historical Permission Notice and Disclaimer (HPND).
+
+3. node-qrcode
+   Copyright (c) 2012 Ryan Day
+   Dilisensikan di bawah MIT License.
+
+4. Node.js & Chromium
+   Dilisensikan di bawah lisensi masing-masing proyek yang kompatibel untuk redistribusi.
+================================================================================
+

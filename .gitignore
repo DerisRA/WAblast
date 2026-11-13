@@ -1,0 +1,15 @@
+﻿# Publish only the reviewed application source and documentation.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE.txt
+!/PANDUAN_INSTALASI.md
+!/ROADMAP_KOMERSIAL.md
+!/PRD.md
+!/app.py
+!/app.ico
+!/whatsapp_bridge.js
+!/package.json
+!/package-lock.json
+!/install_dependencies.bat
+!/run_app.bat
