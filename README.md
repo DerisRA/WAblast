@@ -30,4 +30,5 @@ Number checks do not indicate whether a recipient is online. A sent status means
 
 whatsapp-web.js is an unofficial community library. Changes to WhatsApp Web can break the integration, and automated use may lead to account restrictions. Users are responsible for recipient consent, opt-outs, and applicable rules.
 
+https://github.com/DerisRA/WAblast/releases/tag/WhatsappBlast
 See [Installation guide](PANDUAN_INSTALASI.md) and [License and terms](LICENSE.txt).
